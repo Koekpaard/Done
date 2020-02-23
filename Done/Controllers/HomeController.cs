@@ -9,17 +9,15 @@ namespace Done.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly TodoRepository _todoRepository;
 
-        public HomeController(ILogger<HomeController> logger, TodoRepository todoRepository)
+        public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
-            _todoRepository = todoRepository;
         }
 
         public IActionResult Index()
         {
-            var todos = _todoRepository.GetTodos(1);
+            var todos = TodoRepository.GetTodos(1);
             return View(todos);
         }
 
