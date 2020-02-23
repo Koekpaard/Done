@@ -1,5 +1,8 @@
 ﻿using Done.Data.Models;
 using System.Collections.Generic;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Text.Json;
 
 namespace Done.Data.Repositories
 {
@@ -7,16 +10,33 @@ namespace Done.Data.Repositories
     {
         public List<Todo> GetTodos(int userId)
         {
-            return new List<Todo>()
+            HttpClient client = new HttpClient();
+            client.BaseAddress = ApiSettings.GetTodosURL;
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            HttpResponseMessage response = client.GetAsync("").Result;
+            if (!response.IsSuccessStatusCode)
             {
-                new Todo
+                return FailGracefully(userId);
+            }
+            else
+            {
+                string msgContent = response.Content.ReadAsStringAsync().Result;
+                return JsonSerializer.Deserialize<List<Todo>>(msgContent, ApiSettings.SerializerOptions);
+            }
+        }
+
+        private static List<Todo> FailGracefully(int userId)
+        {
+            return new List<Todo>()
                 {
-                    Id = 1,
-                    UserId = 2,
-                    Title = "Dummy",
-                    Completed = false
-                }
-            };
+                    new Todo
+                    {
+                        Title = "Controleren wat hier misgaat.",
+                        Completed = false,
+                        Id = -1,
+                        UserId = userId
+                    }
+                };
         }
     }
 }
