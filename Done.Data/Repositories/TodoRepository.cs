@@ -6,14 +6,14 @@ using System.Text.Json;
 
 namespace Done.Data.Repositories
 {
-    public class TodoRepository
+    public static class TodoRepository
     {
-        public List<Todo> GetTodos(int userId)
+        public static List<Todo> GetTodos(int userId)
         {
-            HttpClient client = new HttpClient();
+            using HttpClient client = new HttpClient();
             client.BaseAddress = ApiSettings.GetTodosURL;
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            HttpResponseMessage response = client.GetAsync("").Result;
+            HttpResponseMessage response = client.GetAsync($"?userId={userId}").Result;
             if (!response.IsSuccessStatusCode)
             {
                 return FailGracefully(userId);
