@@ -15,7 +15,14 @@
         <ul>
             @foreach (var todo in Model)
             {
-                <li>@todo.Title</li>
+                if (todo.Completed)
+                {
+                    <li><strike>@todo.Title</strike></li>
+                }
+                else
+                {
+                    <li>@todo.Title</li>
+                }
             }
         </ul>
     }
