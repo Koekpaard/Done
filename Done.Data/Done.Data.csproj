@@ -5,10 +5,34 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20200223220046_Init.cs" />
+    <Compile Remove="Migrations\20200223220046_Init.Designer.cs" />
+    <Compile Remove="Migrations\20200223232027_ExternalIdForUsers.cs" />
+    <Compile Remove="Migrations\20200223232027_ExternalIdForUsers.Designer.cs" />
+    <Compile Remove="Migrations\20200223234855_AutoIncrementForExternalId.cs" />
+    <Compile Remove="Migrations\20200223234855_AutoIncrementForExternalId.Designer.cs" />
+    <Compile Remove="Migrations\20200223235335_AutoIncrementForExternalId.cs" />
+    <Compile Remove="Migrations\20200223235335_AutoIncrementForExternalId.Designer.cs" />
+    <Compile Remove="Migrations\20200223235712_AutoIncrementForExternalId.cs" />
+    <Compile Remove="Migrations\20200223235712_AutoIncrementForExternalId.Designer.cs" />
+    <Compile Remove="Migrations\20200224004116_AutoIncrementForExternalId.cs" />
+    <Compile Remove="Migrations\20200224004116_AutoIncrementForExternalId.Designer.cs" />
+    <Compile Remove="Migrations\20200224004220_AutoIncrementForExternalId.cs" />
+    <Compile Remove="Migrations\20200224004220_AutoIncrementForExternalId.Designer.cs" />
+    <Compile Remove="Migrations\20200224011045_AutoIncrementForExternalId.cs" />
+    <Compile Remove="Migrations\20200224011045_AutoIncrementForExternalId.Designer.cs" />
+    <Compile Remove="Migrations\20200224013201_Init.cs" />
+    <Compile Remove="Migrations\20200224013201_Init.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.2" />
     <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.9.8">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.2" />
   </ItemGroup>
 
 </Project>
